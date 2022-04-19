@@ -16,8 +16,7 @@ const romanToInt = (s) => {
     }
     for(let i=0; i<s.length; i++) {
         if(exec.indexOf(s[i]+s[i+1]) !== -1) {
-            result += symbol[s[i+1]] - symbol[s[i]];
-            i+=1;
+            result -= symbol[s[i]];
         }
         else {
             result += symbol[s[i]];
