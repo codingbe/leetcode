@@ -4,6 +4,7 @@
  */
 const romanToInt = (s) => {
     let result = 0;
+    const exec = ["IV", "IX", "XL", "XC", "CD", "CM"];
     const symbol = {
         I: 1,
         V: 5,
@@ -14,7 +15,7 @@ const romanToInt = (s) => {
         M: 1000
     }
     for(let i=0; i<s.length; i++) {
-        if(s[i]+s[i+1] === "IV" || s[i]+s[i+1] === "IX" || s[i]+s[i+1] === "XL" || s[i]+s[i+1] === "XC" || s[i]+s[i+1] === "CD" || s[i]+s[i+1] === "CM"){
+        if(exec.indexOf(s[i]+s[i+1]) !== -1) {
             result += symbol[s[i+1]] - symbol[s[i]];
             i+=1;
         }
