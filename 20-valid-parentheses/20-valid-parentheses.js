@@ -3,21 +3,23 @@
  * @return {boolean}
  */
 const isValid = (s) => {
-   const brackets = ["()", "[]", "{}"];
-   let arr = s.split("").slice(0);
+   const stack = [];
 
-   while (arr.length > 0) {
-      let temp;
-      for (let i = 0; i < arr.length; i++) {
-         if (brackets.includes(arr[i] + arr[i + 1])) {
-            temp = arr.splice(i, 2);
-            i = 0;
+   for (let i = 0; i < s.length; i++) {
+      if (s[i] === "(" || s[i] === "[" || s[i] === "{") stack.push(s[i]);
+      else {
+         switch (s[i]) {
+            case ")":
+               if (stack.pop() !== "(") return false;
+               break;
+            case "]":
+               if (stack.pop() !== "[") return false;
+               break;
+            case "}":
+               if (stack.pop() !== "{") return false;
+               break;
          }
       }
-      if (!temp) {
-         return false;
-      }
    }
-
-   return arr.length === 0;
+   return stack.length === 0;
 };
