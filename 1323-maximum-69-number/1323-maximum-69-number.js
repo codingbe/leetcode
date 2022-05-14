@@ -3,5 +3,5 @@
  * @return {number}
  */
 const maximum69Number = function (num) {
-  return String(num).replace(6, 9);
+  return num.toString().replace(6, 9);
 };
