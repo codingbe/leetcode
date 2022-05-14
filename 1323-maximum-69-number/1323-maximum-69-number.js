@@ -4,14 +4,20 @@
  */
 const maximum69Number = function (num) {
   const answer = [num];
-  const arr = String(num)
+  const str = String(num)
     .split("")
     .map((num) => parseInt(num));
 
-  for (let i = 0; i < arr.length; i++) {
-    const temp = arr.slice(0);
-    temp[i] === 6 ? (temp[i] = 9) : (temp[i] = 6);
-    answer.push(parseInt(temp.join("")));
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === 6) {
+      str[i] = 9;
+      answer.push(str.join(""));
+      str[i] = 6;
+    } else {
+      str[i] = 6;
+      answer.push(str.join(""));
+      str[i] = 9;
+    }
   }
   return Math.max(...answer);
 };
