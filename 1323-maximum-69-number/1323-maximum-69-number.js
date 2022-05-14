@@ -3,15 +3,12 @@
  * @return {number}
  */
 const maximum69Number = function (num) {
-  const answer = [num];
-  const arr = String(num)
-    .split("")
-    .map((num) => parseInt(num));
-
+  const arr = String(num).split("");
   for (let i = 0; i < arr.length; i++) {
-    const temp = arr.slice(0);
-    temp[i] === 6 ? (temp[i] = 9) : (temp[i] = 6);
-    answer.push(parseInt(temp.join("")));
+    if (arr[i] == 6) {
+      arr[i] = 9;
+      break;
+    }
   }
-  return Math.max(...answer);
-}; 
+  return arr.join("");
+};
